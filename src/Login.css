@@ -120,6 +120,23 @@
 .link-text { color: var(--brand-blue); cursor: pointer; font-weight: 600; }
 .link-text:hover { text-decoration: underline; }
 
+.login-options-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 4px 0 8px;
+}
+
+.checkbox-custom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--gray-600);
+  user-select: none;
+}
+
 @media (max-width: 480px) {
   .login-card-glass { padding: 28px 20px; border-radius: var(--r-lg); }
   .login-content-box { padding: 12px; }
