@@ -1,0 +1,4 @@
+/* ReportReviewer.css — unique overrides */
+.report-download-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--brand-navy); color: #fff; border: none; border-radius: var(--r-md); font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+.report-download-btn:hover { background: var(--brand-blue); }
+.report-meta-row { display: flex; gap: 16px; align-items: center; font-size: 13px; color: var(--gray-500); margin-bottom: 16px; flex-wrap: wrap; }

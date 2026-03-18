@@ -1,0 +1,156 @@
+/* StudentDashboard.css — unique overrides only */
+
+.student-dashboard {
+  padding: 28px;
+  min-height: 100vh;
+}
+
+/* Log entry form specific */
+.log-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.status-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.status-indicator-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.status-indicator-block label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-400);
+}
+.status-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--gray-200);
+}
+.header-hint {
+  font-size: 11px;
+  color: var(--gray-400);
+  font-style: italic;
+}
+
+/* Textarea */
+.corporate-textarea {
+  width: 100%;
+  padding: 14px;
+  background: var(--gray-50);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  color: var(--gray-800);
+  resize: vertical;
+  min-height: 120px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  line-height: 1.6;
+}
+.corporate-textarea:focus {
+  border-color: var(--brand-blue);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(23,104,172,0.1);
+}
+
+/* Skills section */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+/* Location verification bento */
+.verification-bento {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px !important;
+  border-radius: var(--r-lg) !important;
+  transition: all 0.3s;
+}
+.verification-bento.verified {
+  background: linear-gradient(135deg, #ecfdf5, #f0fdf4) !important;
+  border-color: #86efac !important;
+}
+.verification-bento.failed {
+  background: linear-gradient(135deg, #fffbeb, #fef9c3) !important;
+  border-color: #fde68a !important;
+}
+.verification-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+.verification-text label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+  display: block;
+}
+.verification-text p {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin: 2px 0 0;
+}
+
+/* Placement confirmed card */
+.placement-confirmed-card {
+  text-align: center;
+  padding: 40px 24px;
+}
+.placement-confirmed-card h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 16px 0 8px;
+}
+
+/* Pill in status box */
+.badge-pill-green-sm {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #d1fae5;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Lock icon circle */
+.lock-icon-circle {
+  width: 72px; height: 72px;
+  background: var(--gray-200);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: var(--gray-400);
+}
+
+/* No placement warning */
+.status-warning-mini h4 { color: var(--warning); margin-bottom: 4px; }
+
+@media (max-width: 768px) {
+  .student-dashboard { padding: 0; }
+  .log-header-bar { flex-direction: column; align-items: stretch; }
+  .status-group { justify-content: space-between; }
+}

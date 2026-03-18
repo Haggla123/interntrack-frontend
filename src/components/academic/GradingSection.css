@@ -1,0 +1,167 @@
+/* GradingSection.css */
+
+.grading-container { max-width: 1100px; margin: 0 auto; }
+
+/* Search header */
+.grading-search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 14px;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+.grading-stats-mini {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-500);
+  white-space: nowrap;
+  align-items: center;
+}
+.pending-tag { color: var(--warning); }
+
+/* Table card */
+.grading-card {
+  background: var(--bg-card);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Table */
+.grading-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+.grading-table th {
+  padding: 11px 16px;
+  background: var(--gray-50);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+  text-align: left;
+  border-bottom: 1px solid var(--gray-200);
+  white-space: nowrap;
+}
+.grading-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--gray-100);
+  vertical-align: middle;
+}
+.grading-table tbody tr:hover { background: var(--gray-50); }
+.row-graded td { background: #f0fffe !important; }
+.row-graded:hover td { background: #e6fffc !important; }
+
+/* Name cell */
+.name-cell strong { display: block; font-weight: 600; font-size: 13.5px; color: var(--gray-800); }
+.name-cell span   { font-size: 11px; color: var(--gray-400); font-family: var(--font-mono); }
+
+/* Score pill */
+.score-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 13px; font-weight: 600; color: var(--gray-600);
+}
+
+/* Grade cell */
+.grade-cell-bold {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+/* Action buttons in table */
+.view-logbook-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px;
+  background: var(--gray-100); color: var(--gray-700);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--r-sm);
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.view-logbook-btn:hover { background: var(--brand-navy); color: #fff; border-color: var(--brand-navy); }
+
+.finalize-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 14px;
+  background: var(--brand-navy); color: #fff;
+  border: none; border-radius: var(--r-md);
+  font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.finalize-btn:hover { background: var(--brand-blue); }
+.finalize-btn.edit {
+  background: var(--gray-100); color: var(--gray-700);
+  border: 1px solid var(--gray-200);
+}
+.finalize-btn.edit:hover { background: var(--gray-200); }
+
+/* Status pill in table */
+.pill {
+  display: inline-block;
+  padding: 3px 10px; border-radius: 20px;
+  font-size: 11px; font-weight: 700;
+}
+.pill.graded { background: #ecfdf5; color: #065f46; border: 1px solid #d1fae5; }
+.pill.pending-grading { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+
+/* Grade modal */
+.grade-modal {
+  background: #fff; border-radius: var(--r-xl);
+  padding: 32px; width: 100%; max-width: 440px;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+  position: relative;
+  animation: scaleIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.close-modal {
+  position: absolute; top: 14px; right: 14px;
+  background: var(--gray-100); border: none;
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.15s;
+}
+.close-modal:hover { background: var(--gray-200); }
+.modal-header { text-align: center; margin-bottom: 20px; }
+.modal-header h3 { font-size: 1rem; font-weight: 700; color: var(--gray-800); margin: 10px 0 4px; }
+.modal-header p { font-size: 13px; color: var(--gray-500); margin: 0; }
+
+.grade-selector-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin: 20px 0;
+}
+.grade-option {
+  padding: 13px 8px; border: 2px solid var(--gray-200);
+  background: var(--gray-50); color: var(--gray-700);
+  border-radius: var(--r-md); font-weight: 800; font-size: 1rem;
+  text-align: center; cursor: pointer; transition: all 0.15s;
+}
+.grade-option:hover {
+  border-color: var(--brand-blue); color: var(--brand-blue);
+  background: #eff6ff;
+}
+.grade-option.selected {
+  border-color: var(--brand-navy); background: var(--brand-navy); color: #fff;
+  box-shadow: 0 4px 12px rgba(3,37,108,0.2);
+}
+.btn-save-grade {
+  width: 100%; padding: 13px;
+  background: var(--brand-navy); color: #fff;
+  border: none; border-radius: var(--r-md);
+  font-weight: 700; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  cursor: pointer; transition: all 0.2s;
+}
+.btn-save-grade:hover { background: var(--brand-blue); }
+.btn-save-grade:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 768px) {
+  .grading-search-header { flex-direction: column; align-items: stretch; }
+  .grade-selector-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+}

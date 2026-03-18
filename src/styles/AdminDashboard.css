@@ -1,0 +1,402 @@
+/* AdminDashboard.css — unique overrides only */
+
+/* Admin sidebar brand */
+.sidebar-brand span { letter-spacing: -0.5px; }
+
+/* Overview middle row */
+.overview-middle-row { display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+.flex-2 { flex: 2; min-width: 0; }
+.flex-1 { flex: 1; min-width: 200px; }
+
+/* Progress analysis */
+.progress-analysis { display: flex; flex-direction: column; gap: 20px; padding: 8px 0; }
+.progress-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; color: var(--gray-600); margin-bottom: 8px; }
+.health-stats { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; }
+.health-item { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+
+/* Activity feed */
+.activity-item-compact {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 0; border-bottom: 1px solid var(--gray-100);
+  font-size: 13px; color: var(--gray-700);
+}
+.activity-icon-sm {
+  padding: 7px; border-radius: var(--r-sm); color: #fff; flex-shrink: 0;
+}
+.bg-blue { background: var(--info); }
+.bg-emerald { background: var(--success); }
+
+/* Placement request row */
+.placement-req-row { font-size: 13px; }
+
+/* Search wrappers */
+.search-wrapper-inline {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--gray-100); padding: 7px 12px;
+  border-radius: var(--r-md); border: 1.5px solid var(--gray-200);
+  transition: all 0.2s;
+}
+.search-wrapper-inline:focus-within {
+  background: #fff; border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px rgba(23,104,172,0.1);
+}
+.search-wrapper-inline input {
+  background: transparent; border: none; outline: none;
+  font-size: 13px; font-family: var(--font-body); color: var(--gray-800); width: 100%;
+}
+
+/* Notification dropdown */
+.notification-wrapper { position: relative; cursor: pointer; }
+.bell-trigger { padding: 8px; border-radius: 50%; transition: background 0.2s; }
+.bell-trigger:hover { background: var(--gray-100); }
+.notification-badge {
+  position: absolute; top: 3px; right: 3px;
+  background: var(--danger); color: #fff;
+  font-size: 9px; font-weight: 800;
+  padding: 1px 5px; border-radius: 10px;
+  border: 2px solid #fff; min-width: 16px; text-align: center;
+}
+.notification-dropdown {
+  position: absolute; top: 44px; right: 0;
+  width: 320px; background: #fff;
+  border-radius: var(--r-lg); border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-lg); z-index: 1000; overflow: hidden;
+}
+.notif-header {
+  padding: 12px 16px; background: var(--gray-50);
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--gray-200);
+  font-weight: 700; font-size: 13px;
+}
+.notif-list { max-height: 340px; overflow-y: auto; }
+.notif-item {
+  display: flex; gap: 12px; padding: 12px 16px;
+  border-bottom: 1px solid var(--gray-100); transition: background 0.15s;
+}
+.notif-item:hover { background: var(--gray-50); }
+.notif-item.unread { background: #eff6ff; }
+.notif-icon-circle {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--gray-100); display: flex; align-items: center;
+  justify-content: center; color: var(--info); flex-shrink: 0;
+}
+.notif-content p { font-size: 12.5px; margin: 0; line-height: 1.4; color: var(--gray-700); }
+.notif-content small { color: var(--gray-400); font-size: 11px; }
+.notif-footer {
+  padding: 11px; text-align: center;
+  font-size: 12px; font-weight: 700; color: var(--info);
+  background: var(--gray-50); cursor: pointer; transition: background 0.15s;
+}
+.notif-footer:hover { background: var(--gray-100); }
+
+/* Slot badge */
+.slot-input-admin {
+  width: 70px; padding: 6px; text-align: center;
+  border: 1px solid var(--gray-300); border-radius: var(--r-sm);
+  font-weight: 700; font-family: var(--font-mono);
+}
+
+/* Student filter tabs */
+.filter-tab-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.filter-tab {
+  padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+  border: 1.5px solid var(--gray-200); background: #fff; color: var(--gray-500);
+  cursor: pointer; transition: all 0.15s;
+}
+.filter-tab.active { background: var(--brand-navy); color: #fff; border-color: var(--brand-navy); }
+.filter-tab:hover:not(.active) { border-color: var(--gray-300); background: var(--gray-50); }
+
+/* Company profile modal */
+.company-card-modal { }
+
+/* File item */
+.file-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 16px;
+  background: var(--bg-card); border: 1px solid var(--gray-200);
+  border-radius: var(--r-md); margin-bottom: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Geofence setup */
+.geofence-setup-box-slim {
+  background: #fffbeb; border: 1px solid #fde68a;
+  padding: 12px; border-radius: var(--r-md); margin-top: 12px;
+}
+.setup-header-sm {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  color: #92400e; letter-spacing: 0.5px; margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .overview-middle-row { flex-direction: column; }
+  .flex-2, .flex-1 { min-width: 100%; }
+  .notification-dropdown { width: 290px; right: -60px; }
+}
+
+@media (max-width: 480px) {
+  .notification-dropdown { width: 95vw; right: -40px; }
+}
+
+/* ================================================================
+   ADMIN DASHBOARD — MISSING CLASS PATCHES
+   These fix classes used in AdminDashboard.js not covered by
+   design-system.css
+   ================================================================ */
+
+/* btn-outline-blue — used on Broadcast button */
+.btn-outline-blue {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 18px;
+  background: transparent;
+  color: var(--info);
+  border: 1.5px solid var(--info);
+  border-radius: var(--r-md);
+  font-size: 13px; font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-outline-blue:hover { background: #eff6ff; }
+
+/* text-link-btn-sm — used in stat cards and notification */
+.text-link-btn-sm {
+  background: none; border: none;
+  color: var(--info); font-size: 12px; font-weight: 700;
+  cursor: pointer; padding: 4px 0;
+  display: inline-flex; align-items: center; gap: 4px;
+  transition: color 0.15s;
+}
+.text-link-btn-sm:hover { color: var(--brand-navy); text-decoration: underline; }
+
+/* text-link-btn-xs — used in placement requests table */
+.text-link-btn-xs {
+  background: none; border: none;
+  color: var(--info); font-size: 11px; font-weight: 600;
+  cursor: pointer; padding: 2px 0;
+  transition: color 0.15s;
+}
+.text-link-btn-xs:hover { color: var(--brand-navy); }
+
+/* action-btns-flex — approve/decline button row */
+.action-btns-flex {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* alert-border — stat card with pending alert */
+.stat-card.alert-border {
+  border-top: 3px solid var(--warning);
+}
+
+/* stat-body — number + label wrapper inside stat card */
+.stat-body { margin: 8px 0 4px; }
+
+/* progress-item — single row inside progress-analysis */
+.progress-item { margin-bottom: 16px; }
+.progress-item:last-child { margin-bottom: 0; }
+.progress-bar-bg {
+  height: 8px; background: var(--gray-200);
+  border-radius: 4px; overflow: hidden; margin-top: 6px;
+}
+.progress-bar-fill {
+  height: 100%; border-radius: 4px;
+  transition: width 1s var(--ease);
+}
+
+/* flex-1 and flex-2 modifier on content-card */
+.content-card.flex-2 { flex: 2; min-width: 0; }
+.content-card.flex-1 { flex: 1; min-width: 200px; }
+
+/* Reports tab in sidebar (added in AdminSidebar but inline sidebar also needs it) */
+.sidebar-nav li[data-tab="reports"] { }
+
+/* Sidebar li properly spaced when used without <ul> */
+.sidebar-nav { padding: 0; margin: 0; }
+.sidebar-nav li {
+  list-style: none;
+  border-left: 4px solid transparent;
+}
+.sidebar-nav li.active {
+  border-left-color: var(--sidebar-active);
+  padding-left: 9px;
+}
+
+/* Admin profile pill name on desktop */
+.admin-profile-pill span { display: block; }
+
+/* Reports tab — add to inline Admin sidebar */
+/* The inline sidebar in AdminDashboard.js needs the reports tab manually added */
+
+/* Pending placement request row layout */
+.placement-req-cell { }
+.placement-location-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  color: var(--info); font-size: 12px; font-weight: 600;
+  background: none; border: none; cursor: pointer;
+  text-decoration: none;
+}
+.placement-location-link:hover { text-decoration: underline; }
+
+/* GPS badge */
+.gps-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; background: #eff6ff;
+  border: 1px solid #dbeafe; border-radius: var(--r-sm);
+  font-size: 11px; font-weight: 600; color: #1e40af;
+  font-family: var(--font-mono);
+}
+
+/* Supervisor load badge */
+.load-badge {
+  display: inline-block; padding: 2px 8px;
+  border-radius: 20px; font-size: 10px; font-weight: 700;
+}
+.load-badge.low  { background: #ecfdf5; color: #065f46; }
+.load-badge.mid  { background: #fffbeb; color: #92400e; }
+.load-badge.high { background: #fef2f2; color: #b91c1c; }
+
+/* Company edit inline form */
+.inline-edit-row {
+  background: var(--gray-50);
+  border-top: 2px solid var(--brand-blue);
+}
+.inline-edit-row td { padding: 16px !important; }
+
+/* Table action group */
+.action-group-sm {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+}
+
+/* Unassign button */
+.btn-unassign {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px;
+  background: #fffbeb; color: #d97706;
+  border: 1px solid #fde68a; border-radius: var(--r-sm);
+  font-size: 11px; font-weight: 600; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-unassign:hover { background: #fef3c7; }
+
+/* Revoke placement button */
+.btn-revoke {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px;
+  background: #fef2f2; color: var(--danger);
+  border: 1px solid #fecaca; border-radius: var(--r-sm);
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-revoke:hover { background: #fee2e2; }
+
+/* Overview stat card icon colour classes */
+.text-blue   { color: var(--info); }
+.text-emerald { color: var(--success); }
+.text-amber  { color: var(--warning); }
+.text-indigo { color: #6366f1; }
+.text-red    { color: var(--danger); }
+
+/* Header h4 inside content-card */
+.content-card h4 {
+  font-size: 14px; font-weight: 700;
+  color: var(--gray-800); margin-bottom: 16px;
+}
+
+/* Vertical divider in top-nav */
+.nav-divider {
+  width: 1px; height: 24px; background: var(--gray-200); flex-shrink: 0;
+}
+
+/* Search bar in top-nav */
+.top-nav-search {
+  flex: 1; max-width: 380px;
+  display: flex; align-items: center; gap: 10px;
+  background: var(--gray-100); padding: 8px 14px;
+  border-radius: var(--r-md); border: 1.5px solid var(--gray-200);
+  transition: all 0.2s;
+}
+.top-nav-search:focus-within {
+  background: #fff; border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px rgba(23,104,172,0.1);
+}
+.top-nav-search input {
+  background: transparent; border: none; outline: none;
+  font-size: 13px; font-family: var(--font-body); width: 100%;
+}
+
+@media (max-width: 768px) {
+  .top-nav-search { display: none; }
+  .action-btns-flex { gap: 6px; }
+  .content-card.flex-2, .content-card.flex-1 { flex: 1 1 100%; }
+}
+
+/* ================================================================
+   STUDENT TABLE — MOBILE FIX
+   ================================================================ */
+
+/* Wrap every data-table in a scroll container */
+.content-card .table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--r-md);
+  border: 1px solid var(--gray-200);
+}
+
+/* Give the student table minimum widths per column */
+.data-table th:nth-child(1), .data-table td:nth-child(1) { min-width: 140px; } /* Name */
+.data-table th:nth-child(2), .data-table td:nth-child(2) { min-width: 110px; white-space: nowrap; } /* Index */
+.data-table th:nth-child(3), .data-table td:nth-child(3) { min-width: 120px; } /* Dept */
+.data-table th:nth-child(4), .data-table td:nth-child(4) { min-width: 90px;  white-space: nowrap; } /* Status */
+.data-table th:nth-child(5), .data-table td:nth-child(5) { min-width: 140px; } /* Company */
+.data-table th:nth-child(6), .data-table td:nth-child(6) { min-width: 130px; white-space: nowrap; } /* Actions */
+
+/* Action group in table — keep on ONE line, never wrap */
+.data-table .action-group-sm {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
+/* Manage button — never break text */
+.btn-manage-student {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Delete / reject button in table — icon-only on mobile */
+.data-table .btn-reject-outline {
+  white-space: nowrap;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+/* On very small screens make action buttons icon-only */
+@media (max-width: 480px) {
+  .data-table .btn-manage-student span { display: none; }
+  .data-table .btn-reject-outline span { display: none; }
+}
+
+/* Mobile close button in sidebar - hidden on desktop, shown on mobile */
+@media (max-width: 768px) {
+  .mobile-close-btn {
+    display: flex !important;
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+  }
+  .mobile-close-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
+
+  /* Each sidebar nav item auto-closes sidebar via setTab */
+  .sidebar-nav li { transition: background 0.15s; }
+}

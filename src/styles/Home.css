@@ -1,0 +1,482 @@
+:root {
+  /* Your New Color Code Palette */
+  --primary-deep: #03256c;   /* Deep Navy */
+  --primary-royal: #2541b2;  /* Royal Blue */
+  --primary-azure: #1768ac;  /* Azure */
+  --primary-cyan: #06bee1;   /* Cyan */
+  --white: #ffffff;          /* White */
+
+  /* Semantic Mapping */
+  --primary: var(--primary-royal);
+  --primary-hover: var(--primary-deep);
+  --bg-page: #f8fafc;
+  --bg-light: #f1f5f9;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --footer-bg: var(--primary-deep);
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(3, 37, 108, 0.1);
+  --radius: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-padding {
+  padding: 80px 0;
+}
+
+.bg-light {
+  background-color: var(--bg-light);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 50px;
+  color: var(--primary-deep);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-deep);
+  border-bottom: 1px solid var(--primary-azure);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo{
+  width: 50px;
+  height: 65px;
+  display: flex;
+}
+
+.logo-details {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--primary-cyan);
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  /* Dark Gradient Overlay for Text Visibility */
+  background: linear-gradient(
+      135deg, 
+      rgba(3, 37, 108, 0.85) 0%, 
+      rgba(23, 104, 172, 0.6) 100%
+    ),
+    url("./image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 900;
+  max-width: 900px;
+  margin-top: 90px;
+  padding: 20px;
+  /* Shadow added for extra pop */
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+/* Cards & Grid */
+.card {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--primary-azure);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(3, 37, 108, 0.08);
+}
+
+.features-grid, .roles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background-color: var(--primary-azure) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* How it Works (Steps) */
+.steps-row {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+}
+
+.step-badge {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-cyan);
+  color: var(--primary-deep);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+/* Buttons */
+
+.btn-outline{padding: 10px; border: none; border-radius: 10px; font-weight: bold;}
+.btn-outline:hover{background-color: rgb(207, 186, 186);}
+
+.btn-primary-lg {
+  /* FIX: background-color was completely missing — the "Get Started" CTA
+     rendered with a transparent/inherited background over the hero image,
+     making it invisible or near-invisible depending on the browser.
+     Using --primary-cyan to match the hover state and keep it consistent
+     with the outline button's border color. */
+  background-color: var(--primary-cyan);
+  color: var(--primary-deep);
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary-lg:hover {
+  background-color: #06bee1;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(6, 190, 225, 0.3);
+}
+
+.btn-outline-lg {
+  background-color: transparent;
+  color: var(--white);
+  border: 2px solid var(--primary-cyan);
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.btn-outline-lg:hover {
+  background-color: #06bee1;
+}
+
+.btn-primary-full {
+  background-color: var(--primary-deep);
+  color: var(--white);
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  width: 100%;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary-deep);
+  color: var(--white);
+  padding: 50px 0 30px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+.footer-links a{color: white; text-decoration: none; display: flex; flex-direction: column; }
+.footer-links a:hover{color: antiquewhite;}
+.logo-white {
+  padding: 8px 16px;
+  border: 2px solid var(--primary-cyan);
+  font-weight: 900;
+  border-radius: 4px;
+}
+
+/* Responsive Queries */
+@media (max-width: 768px) {
+  .hero-content h1 { font-size: 2.2rem; }
+  .nav-links { display: none; }
+  .steps-row { flex-direction: column; }
+  .footer-top { flex-direction: column; gap: 30px; }
+  .features-grid, .roles-grid { grid-template-columns: 1fr; }
+}
+
+/* --- Global Fixes --- */
+.home-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Fix for the footer width issue found in original code */
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-left: 0 !important; /* Removed the 500px padding */
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+/* --- 🏢 Logo Slider Styles --- */
+.logo-slider {
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-track {
+  display: flex;
+  width: calc(250px * 16);
+  animation: scroll 40s linear infinite;
+}
+
+.slide {
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partner-logo-box {
+  font-weight: 800;
+  color: #94a3b8;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-250px * 8)); }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .nav-links {
+    gap: 15px;
+  }
+  .logo-text {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.4rem;
+    padding: 10px;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    padding: 0 40px;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    height: 70px;
+  }
+  
+  .logo img {
+    height: 45px;
+    margin-top: 10px;
+  }
+
+  .logo-text {
+    display: block !important; 
+    font-size: 1.5rem; /* Hide text on very small screens to save space */
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .section-padding {
+    padding: 40px 0;
+  }
+}
+
+/* --- Footer Container --- */
+.footer {
+  background-color: var(--primary-deep);
+  color: var(--white);
+  padding: 60px 0 30px;
+}
+
+/* --- Top Section: Brand Left, Desc Right --- */
+.footer-top {
+  display: flex;
+  justify-content: space-between; /* This pushes brand left and desc right */
+  align-items: center;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand {
+  display: flex;
+  justify-content: space-between; /* Internal push */
+  align-items: center;
+  width: 100%; /* Take up full width to allow the push */
+}
+
+.logo-white {
+  padding: 8px 16px;
+  border: 2px solid var(--primary-cyan);
+  font-weight: 900;
+  border-radius: 4px;
+  flex-shrink: 0; /* Don't let the logo shrink */
+}
+
+/* The Description Text */
+.footer-brand p {
+  text-align: right; /* Align text inside the box to the right */
+  max-width: 400px; /* Prevent it from stretching too far */
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Fixed Footer Bottom --- */
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-left: 0 !important; /* Fixed the 500px bug permanently */
+  margin-top: 20px;
+}
+
+/* --- Responsive Queries for Mobile --- */
+@media (max-width: 768px) {
+  .footer-brand {
+    flex-direction: column; /* Stack them on mobile */
+    gap: 20px;
+  }
+
+  .footer-brand p {
+    text-align: center; /* Center text on mobile */
+    max-width: 100%;
+  }
+
+  .footer-top {
+    padding-bottom: 20px;
+  }
+}

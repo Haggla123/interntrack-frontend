@@ -1,0 +1,13 @@
+/* VisitScheduler.css — unique overrides */
+.visit-form-card { }
+.visit-list-card { }
+.student-dropdown-option { padding: 10px 14px; font-size: 13px; cursor: pointer; border-bottom: 1px solid var(--gray-100); display: flex; justify-content: space-between; align-items: center; transition: background 0.15s; }
+.student-dropdown-option:hover { background: var(--gray-50); }
+.priority-tag { font-size: 10px; font-weight: 700; padding: 2px 6px; background: #fef3c7; color: #92400e; border-radius: 4px; }
+.no-visits-state { text-align: center; padding: 40px; color: var(--gray-400); }
+.visit-status-scheduled { color: var(--info); }
+.visit-status-completed { color: var(--success); }
+.visit-status-cancelled { color: var(--danger); }
+@media (max-width: 768px) {
+  .visit-grid { grid-template-columns: 1fr; }
+}

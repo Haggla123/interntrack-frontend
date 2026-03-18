@@ -1,0 +1,144 @@
+/* AssignedStudents.css */
+
+.assigned-root { max-width: 1100px; margin: 0 auto; }
+
+/* Search bar */
+.as-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 400px;
+  padding: 9px 14px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--r-md);
+  transition: all 0.2s;
+}
+.as-search-box:focus-within {
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px rgba(23,104,172,0.1);
+}
+.as-search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  font-family: var(--font-body);
+  color: var(--gray-800);
+  background: transparent;
+}
+
+/* Table */
+.as-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+.as-table th {
+  padding: 11px 16px;
+  background: var(--gray-50);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+  text-align: left;
+  border-bottom: 1px solid var(--gray-200);
+  white-space: nowrap;
+}
+.as-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--gray-100);
+  font-size: 13.5px;
+  vertical-align: middle;
+}
+.as-table tbody tr:hover { background: var(--gray-50); }
+.as-row-selected { background: #eff6ff !important; }
+
+/* Name cell */
+.as-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.as-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--brand-navy);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Location pill */
+.as-location-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Progress */
+.as-progress-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 120px;
+}
+.as-progress-track {
+  flex: 1;
+  height: 6px;
+  background: var(--gray-200);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.as-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #1e1b4b, #1768ac);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+/* Buttons */
+.as-btn-primary {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 12px;
+  background: var(--brand-navy); color: #fff;
+  border: none; border-radius: var(--r-sm);
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; white-space: nowrap;
+  transition: all 0.2s;
+}
+.as-btn-primary:hover { background: var(--brand-blue); }
+
+.as-btn-outline {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 12px;
+  background: var(--gray-100); color: var(--gray-700);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--r-sm);
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; white-space: nowrap;
+  transition: all 0.2s;
+}
+.as-btn-outline:hover { background: var(--gray-200); }
+
+/* Academic banner override for this page (light style) */
+.assigned-root .welcome-box.academic-banner {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%) !important;
+  border: none !important;
+}
+
+@media (max-width: 768px) {
+  .as-search-box { max-width: 100%; }
+  .as-btn-outline span,
+  .as-btn-primary span { display: none; }
+}

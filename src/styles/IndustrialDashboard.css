@@ -1,0 +1,19 @@
+/* Evaluation form card */
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--r-lg);
+  padding: 24px;
+}
+
+/* Rating slider */
+.rating-item label { display: flex; align-items: center; gap: 6px; }
+.rating-item input[type="range"] {
+  accent-color: var(--brand-blue);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .evaluation-grid { grid-template-columns: 1fr; }
+  .rating-grid { gap: 0; }
+}
