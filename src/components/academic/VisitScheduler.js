@@ -4,7 +4,7 @@ import { Calendar, Clock, MapPin, User, Plus, AlertCircle, Search, Check, Chevro
 import './VisitScheduler.css';
 import { scheduleVisit, getVisits, updateVisit } from '../../api';
 
-const VisitScheduler = ({ students = [], setNextVisit }) => {
+const VisitScheduler = ({ students = [], setNextVisit, visitedStudentIds = new Set() }) => {
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [visitDate, setVisitDate]   = useState('');
   const [visitTime, setVisitTime]   = useState('');
@@ -16,6 +16,11 @@ const VisitScheduler = ({ students = [], setNextVisit }) => {
   const [errorMsg, setErrorMsg]     = useState('');
   const [updatingVisit, setUpdatingVisit] = useState(''); // visitId being updated
 
+  const [localVisitedIds, setLocalVisitedIds] = useState(new Set(visitedStudentIds));
+
+  // Keep local set in sync when parent's set changes
+  useEffect(() => { setLocalVisitedIds(new Set(visitedStudentIds)); }, [visitedStudentIds]);
+
   const handleStatusUpdate = async (visitId, status) => {
     setUpdatingVisit(visitId);
     try {
@@ -23,6 +28,27 @@ const VisitScheduler = ({ students = [], setNextVisit }) => {
       const updated = res?.data || res;
       const newVisits = visits.map(v => (v._id || v.id) === visitId ? { ...v, status: updated.status || status } : v);
       setVisits(newVisits);
+
+      // Update local visited set — add student if Completed or Scheduled, remove if Cancelled
+      const visit = visits.find(v => (v._id || v.id) === visitId);
+      const sid = (visit?.student?._id || visit?.student || '').toString();
+      if (sid) {
+        setLocalVisitedIds(prev => {
+          const next = new Set(prev);
+          if (status === 'Completed' || status === 'Scheduled') next.add(sid);
+          else if (status === 'Cancelled') {
+            // Only remove if no other completed/scheduled visit exists for this student
+            const stillHandled = newVisits.some(v =>
+              (v.student?._id || v.student || '').toString() === sid &&
+              (v._id || v.id) !== visitId &&
+              (v.status === 'Completed' || (v.status === 'Scheduled' && new Date(v.date) >= new Date()))
+            );
+            if (!stillHandled) next.delete(sid);
+          }
+          return next;
+        });
+      }
+
       const upcoming = newVisits
         .filter(v => v.status !== 'Completed' && v.status !== 'Cancelled' && new Date(v.date) >= new Date())
         .sort((a, b) => new Date(a.date) - new Date(b.date))[0];
@@ -34,27 +60,39 @@ const VisitScheduler = ({ students = [], setNextVisit }) => {
     }
   };
 
-  // Load existing scheduled visits
+  // Load existing scheduled visits and build localVisitedIds from them too
   useEffect(() => {
     getVisits()
       .then(res => {
         const arr = Array.isArray(res) ? res : Array.isArray(res.data) ? res.data : [];
         setVisits(arr);
-        // Surface the nearest upcoming visit to parent (overview card)
         const upcoming = arr
           .filter(v => new Date(v.date) >= new Date())
           .sort((a, b) => new Date(a.date) - new Date(b.date))[0];
         if (upcoming && setNextVisit) setNextVisit(upcoming);
+
+        // Build visited set from actual visit records
+        const ids = new Set(
+          arr
+            .filter(v => v.status === 'Completed' || (v.status === 'Scheduled' && new Date(v.date) >= new Date()))
+            .map(v => (v.student?._id || v.student || '').toString())
+            .filter(Boolean)
+        );
+        setLocalVisitedIds(ids);
       })
       .catch(() => {});
   }, []);
+
+  // Students who are placed but have NO completed or upcoming scheduled visit
+  const priorityStudents = students.filter(s => {
+    if (!s.company || s.company === 'Not placed') return false;
+    return !localVisitedIds.has((s._id || s.id || '').toString());
+  });
 
   const filteredOptions = students.filter(s =>
     (s.name    || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (s.company || '').toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  const priorityStudents = students.filter(s => !s.lastVisit || s.lastVisit === 'None');
 
   const handleSelect = (student) => {
     setSelectedStudent(student);
@@ -80,6 +118,10 @@ const VisitScheduler = ({ students = [], setNextVisit }) => {
       const saved = res.data || res;
       const newVisits = [saved, ...visits];
       setVisits(newVisits);
+
+      // Mark student as visited immediately so they leave the urgent list
+      const sid = (selectedStudent._id || selectedStudent.id || '').toString();
+      if (sid) setLocalVisitedIds(prev => new Set([...prev, sid]));
 
       // Update next visit for overview
       const upcoming = newVisits

@@ -165,7 +165,7 @@ const AcademicDashboard = () => {
           onGradeUpdate={handleGradeUpdate}
         />
       );
-      case 'visits':   return <VisitScheduler students={students} setNextVisit={setNextVisit} />;
+      case 'visits':   return <VisitScheduler students={students} setNextVisit={setNextVisit} visitedStudentIds={visitedStudentIds} />;
       case 'settings': return <AcademicSettings handleLogout={() => logout()} />;
       default:         return (
         <AcademicOverview
