@@ -223,11 +223,6 @@ body {
 .btn-outline:hover{background-color: rgb(207, 186, 186);}
 
 .btn-primary-lg {
-  /* FIX: background-color was completely missing — the "Get Started" CTA
-     rendered with a transparent/inherited background over the hero image,
-     making it invisible or near-invisible depending on the browser.
-     Using --primary-cyan to match the hover state and keep it consistent
-     with the outline button's border color. */
   background-color: var(--primary-cyan);
   color: var(--primary-deep);
   border: none;
@@ -237,6 +232,10 @@ body {
   font-size: 1.1rem;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .btn-primary-lg:hover {

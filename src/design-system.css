@@ -113,6 +113,7 @@ a { text-decoration: none; color: inherit; }
   width: var(--sidebar-w);
   background: var(--bg-sidebar);
   height: 100vh;
+  height: 100dvh; /* dynamic viewport — accounts for mobile browser chrome */
   position: fixed;
   left: 0; top: 0;
   display: flex;
@@ -131,6 +132,7 @@ a { text-decoration: none; color: inherit; }
 .sidebar-footer {
   padding: 16px;
   border-top: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0; /* never compress — always visible at bottom */
 }
 
 .sidebar-brand {

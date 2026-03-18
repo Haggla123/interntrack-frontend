@@ -217,6 +217,7 @@ const StudentDashboard = () => {
               <div className="bento-item progress-box">
                 <div className="box-header">
                   <label>Program Completion</label>
+                  <span> </span>
                   <span className="percentage-text">
                     {placement ? Math.round((studentInfo.completedWeeks / studentInfo.totalWeeks) * 100) : 0}%
                   </span>
@@ -229,6 +230,7 @@ const StudentDashboard = () => {
                 </div>
                 <div className="progress-footer">
                   <span>{placement ? `Week ${studentInfo.completedWeeks}` : 'Not started'}</span>
+                  <span> / </span>
                   <span>{studentInfo.totalWeeks} Weeks Total</span>
                 </div>
               </div>
