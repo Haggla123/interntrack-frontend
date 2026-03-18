@@ -1,13 +1,280 @@
-/* VisitScheduler.css — unique overrides */
-.visit-form-card { }
-.visit-list-card { }
-.student-dropdown-option { padding: 10px 14px; font-size: 13px; cursor: pointer; border-bottom: 1px solid var(--gray-100); display: flex; justify-content: space-between; align-items: center; transition: background 0.15s; }
+/* VisitScheduler.css */
+
+/* ── Main grid: side by side on desktop, stacked on mobile ── */
+.scheduler-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.scheduler-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .scheduler-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Form card ── */
+.schedule-form-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.card-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.card-header-flex h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin: 0;
+}
+
+/* ── Date + Time row: side by side on desktop, stacked on mobile ── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+}
+
+.form-group input[type="date"],
+.form-group input[type="time"] {
+  padding: 10px 12px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--gray-800);
+  background: #fff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group input[type="date"]:focus,
+.form-group input[type="time"]:focus {
+  border-color: var(--brand-navy);
+  box-shadow: 0 0 0 3px rgba(3,37,108,0.08);
+}
+
+/* ── Search input ── */
+.search-input-wrapper {
+  position: relative;
+}
+
+.search-icon-inner {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+  pointer-events: none;
+}
+
+.search-field {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--gray-800);
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.search-field:focus {
+  border-color: var(--brand-navy);
+  box-shadow: 0 0 0 3px rgba(3,37,108,0.08);
+}
+
+/* ── Search dropdown ── */
+.search-results-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  z-index: 100;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.custom-select-container {
+  position: relative;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--gray-100);
+  transition: background 0.1s;
+}
+
+.search-result-item:last-child { border-bottom: none; }
+.search-result-item:hover { background: var(--gray-50); }
+
+.res-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.res-info strong { font-size: 13.5px; color: var(--gray-800); }
+.res-info span   { font-size: 11.5px; color: var(--gray-400); }
+.check-icon      { color: #15803d; flex-shrink: 0; }
+.no-res          { padding: 14px; text-align: center; font-size: 13px; color: var(--gray-400); }
+
+/* ── Confirm button ── */
+.confirm-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--brand-navy, #03256c);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity 0.15s;
+}
+
+.confirm-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Priority / urgent card ── */
+.priority-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sub-text {
+  font-size: 12.5px;
+  color: var(--gray-400);
+  margin: 0;
+}
+
+.priority-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.priority-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #fafbfc;
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.1s;
+  gap: 10px;
+}
+
+.priority-item:hover { background: #f1f5f9; }
+
+.priority-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.priority-info strong {
+  font-size: 13.5px;
+  color: var(--gray-800);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11.5px;
+  color: var(--gray-400);
+}
+
+.quick-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: var(--brand-navy, #03256c);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.empty-priority {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: #f0fdf4;
+  border-radius: 8px;
+  color: #15803d;
+  font-size: 13px;
+}
+
+/* ── Legacy ── */
+.student-dropdown-option { padding: 10px 14px; font-size: 13px; cursor: pointer; border-bottom: 1px solid var(--gray-100); display: flex; justify-content: space-between; align-items: center; }
 .student-dropdown-option:hover { background: var(--gray-50); }
 .priority-tag { font-size: 10px; font-weight: 700; padding: 2px 6px; background: #fef3c7; color: #92400e; border-radius: 4px; }
-.no-visits-state { text-align: center; padding: 40px; color: var(--gray-400); }
-.visit-status-scheduled { color: var(--info); }
-.visit-status-completed { color: var(--success); }
-.visit-status-cancelled { color: var(--danger); }
-@media (max-width: 768px) {
-  .visit-grid { grid-template-columns: 1fr; }
-}

@@ -101,7 +101,22 @@ const VisitScheduler = ({ students = [], setNextVisit }) => {
   };
 
   return (
-    <div className="scheduler-container fade-in">
+    <div className="scheduler-container fade-in" style={{ width:'100%', maxWidth:'900px', margin:'0 auto', boxSizing:'border-box' }}>
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @media (max-width: 768px) {
+          .scheduler-container,
+          .scheduler-container .scheduler-grid,
+          .scheduler-container .schedule-form-card,
+          .scheduler-container .priority-card,
+          .scheduler-container .bento-item {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+          }
+          .page-content { padding: 8px !important; }
+        }
+      `}</style>
 
       {success && (
         <div style={{ display:'flex', alignItems:'center', gap:'8px', padding:'12px 16px', background:'#f0fdf4', border:'1px solid #86efac', borderRadius:'8px', color:'#15803d', fontSize:'14px', marginBottom:'12px' }}>
@@ -263,7 +278,6 @@ const VisitScheduler = ({ students = [], setNextVisit }) => {
           </div>
         </div>
       )}
-      <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
     </div>
   );
 };

@@ -1471,7 +1471,7 @@ a { text-decoration: none; color: inherit; }
   .admin-profile-pill span { display: none; }
 
   /* Page content less padding */
-  .page-content { padding: 16px; }
+  .page-content { padding: 10px; }
 
   /* Stat cards single column */
   .overview-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
