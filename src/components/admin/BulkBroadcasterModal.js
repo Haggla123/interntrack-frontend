@@ -11,7 +11,7 @@ const PLACEHOLDER = `Dear {name},\n\nThe InternTrack placement portal is now act
 const BulkBroadcasterModal = ({
   isOpen,
   onClose,
-  // FIX: receive separate counts per role instead of a single targetCount
+  // receive separate counts per role instead of a single targetCount
   studentCount    = 0,
   academicCount   = 0,
   industrialCount = 0,
@@ -26,7 +26,7 @@ const BulkBroadcasterModal = ({
 
   if (!isOpen) return null;
 
-  // FIX: derive the count from the selected role
+  // derive the count from the selected role
   const targetCount = targetRole === 'student'    ? studentCount
                     : targetRole === 'academic'   ? academicCount
                     : industrialCount;
@@ -116,7 +116,7 @@ const BulkBroadcasterModal = ({
                 </div>
               </div>
 
-              {/* FIX: info banner shows count for the selected role */}
+              {/*  info banner shows count for the selected role */}
               <div className="broadcast-alert-info">
                 <Info size={18} />
                 <span>

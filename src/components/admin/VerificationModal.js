@@ -1,7 +1,4 @@
 // src/components/admin/VerificationModal.js
-// FIX: lec.dept → lec.department throughout.
-// The User model field is `department`, not `dept`.
-// Every lecturer option was showing "(undefined)" in the dropdown.
 import React, { useState } from 'react';
 import { X, CheckCircle, CheckCircle2, ShieldCheck } from 'lucide-react';
 
@@ -83,7 +80,7 @@ const VerificationModal = ({ isOpen, onClose, studentData, lecturers, onApprove 
                     const id = (lec._id || lec.id)?.toString();
                     return (
                       <option key={id} value={id}>
-                        {/* FIX: was lec.dept — correct field name is lec.department */}
+                        {/* was lec.dept — correct field name is lec.department */}
                         {lec.name} ({lec.department || lec.staffId || 'Faculty'})
                       </option>
                     );

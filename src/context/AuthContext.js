@@ -17,9 +17,7 @@ const isExpired = (token) => {
   return decoded.exp * 1000 < Date.now();
 };
 
-// FIX: single helper so every storage read in this file is consistent.
-// Login.js writes to sessionStorage when "Remember Me" is unchecked,
-// so every read must check both — not just localStorage.
+
 const getStoredToken = () =>
   localStorage.getItem('token') || sessionStorage.getItem('token');
 
@@ -68,11 +66,8 @@ function AuthProvider({ children }) {
     setUser(userData);
   }, []);
 
-  // FIX: logout now clears BOTH storages.
-  // Previously only localStorage was cleared, so a "Don't Remember Me"
-  // session's token remained in sessionStorage after logout — the user
-  // appeared logged out in React state but the token was still valid
-  // and would re-authenticate on the next page load/refresh.
+  // logout clears BOTH storages.
+
   const logout = useCallback((reason = 'manual') => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -97,11 +92,7 @@ function AuthProvider({ children }) {
     });
   }, []);
 
-  // FIX: refreshUser now reads from both storages, writes back to the
-  // correct one, and gets the fully-populated user object from /auth/me
-  // (which includes companyId.name, academicSupervisor.department, etc.).
-  // Previously it only checked localStorage, so "Don't Remember Me" users
-  // never got their company/supervisor data populated on the frontend.
+
   const refreshUser = useCallback(async () => {
     const token = getStoredToken();
     if (!token || isExpired(token)) return;
@@ -113,6 +104,7 @@ function AuthProvider({ children }) {
       if (!res.ok) return;
       const data  = await res.json();
       const fresh = data.user || data;
+
       // Write to whichever storage holds the active session
       if (localStorage.getItem('token')) {
         localStorage.setItem('user', JSON.stringify(fresh));

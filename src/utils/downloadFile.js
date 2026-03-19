@@ -1,6 +1,3 @@
-// src/utils/downloadFile.js
-// FIX: was using localStorage.getItem('token') directly — broken for
-// "Don't Remember Me" sessions where the token lives in sessionStorage.
 const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 // Read from whichever storage holds the active session token

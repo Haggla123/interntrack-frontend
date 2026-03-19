@@ -1,5 +1,5 @@
 // src/components/admin/AssignmentTab.js
-// Rebuilt: shows unassigned students prominently, supports batch selection,
+// shows unassigned students prominently, supports batch selection,
 // one-by-one assignment, supervisor load badges, and a clear split view.
 import React, { useState, useEffect, useCallback } from 'react';
 import {

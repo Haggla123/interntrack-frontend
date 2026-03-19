@@ -11,19 +11,18 @@ import {
 import { getStudents, getMyGrades, submitGrade, updateGrade } from '../../api';
 
 // ── Grade helpers ─────────────────────────────────────────────────
-// FIX: removed 'D+' — not in Grade schema enum ['A','B+','B','C+','C','D','F']
 const scoreToGrade = (pct) => {
   if (pct >= 80) return 'A';
   if (pct >= 75) return 'B+';
   if (pct >= 70) return 'B';
   if (pct >= 65) return 'C+';
   if (pct >= 60) return 'C';
+  if (pct >= 55) return 'D+';
   if (pct >= 45) return 'D';
   return 'F';
 };
 
-// FIX: legacy grades stored score as Math.round(pct/10) (0–10 scale).
-// New grades store the raw percentage (0–100). Normalise both to /100.
+// grades store the raw percentage (0–100). Normalise both to /100.
 const normaliseScore = (raw) => {
   if (raw == null) return null;
   const n = Number(raw);
@@ -338,14 +337,12 @@ const InternEvaluation = () => {
     const { student, grade: existingGrade } = editing;
     const payload = {
       grade:    scoreToGrade(pct),
-      // FIX: store the raw 100-point total score
+      // store the raw 100-point total score
       score:    pct,
       comments: comments.trim(),
-      // FIX: store all 7 UENR criteria as their actual raw marks
+      // store all 7 UENR criteria as their actual raw marks
       // (e.g. attendance out of 15, cooperation out of 10, etc.)
-      // Previously these were compressed into 4 generic sub-scores
-      // (technical/teamwork/communication) which lost the original data
-      // and showed the wrong labels to the academic supervisor.
+      
       attendance:          scores.attendance,
       punctuality:         scores.punctuality,
       cooperation:         scores.cooperation,

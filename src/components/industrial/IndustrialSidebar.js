@@ -28,7 +28,7 @@ const IndustrialSidebar = ({
             </div>
           </div>
           
-          {/* FIXED: Added mobile-only close button */}
+          {/* Add mobile-only close button */}
           <button className="mobile-close-btn" onClick={closeSidebar}>
             <X size={24} />
           </button>

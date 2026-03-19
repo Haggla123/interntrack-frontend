@@ -1,8 +1,3 @@
-// src/pages/ForgotAccessModal.js
-// FIX: URL was built as `${REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/forgot-password`
-// If REACT_APP_API_URL = 'http://localhost:5000/api' (the standard value set in the
-// frontend .env), the URL became http://localhost:5000/api/api/auth/forgot-password — a 404.
-// Fixed to use the same BASE_URL pattern as api.js so both always agree.
 import React, { useState } from 'react';
 import { X, Send, Mail, ShieldAlert } from 'lucide-react';
 
@@ -22,8 +17,7 @@ const ForgotAccessModal = ({ isOpen, onClose, currentRole }) => {
     setLoading(true);
     setError('');
     try {
-      // FIX: was `${REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/forgot-password`
-      // which produced a double /api when REACT_APP_API_URL already ends in /api
+      
       const res = await fetch(`${BASE_URL}/auth/forgot-password`, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },

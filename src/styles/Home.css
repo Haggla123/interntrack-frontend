@@ -305,12 +305,11 @@ body {
   width: 100%;
 }
 
-/* Fix for the footer width issue found in original code */
 .footer-bottom {
   display: flex;
   justify-content: center;
   text-align: center;
-  padding-left: 0 !important; /* Removed the 500px padding */
+  padding-left: 0 !important; 
   margin-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 20px;
@@ -454,12 +453,12 @@ body {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* --- Fixed Footer Bottom --- */
+/* --- Footer Bottom --- */
 .footer-bottom {
   display: flex;
   justify-content: center;
   text-align: center;
-  padding-left: 0 !important; /* Fixed the 500px bug permanently */
+  padding-left: 0 !important; 
   margin-top: 20px;
 }
 

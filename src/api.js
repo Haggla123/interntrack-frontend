@@ -1,7 +1,6 @@
-// src/api.js
 const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
-// FIX: Check both storages — Login.js uses sessionStorage when
+// Check both storages — Login.js uses sessionStorage when
 // "Remember Me" is unchecked. The old code only read localStorage,
 // causing every API call to send no token → 401 on all requests.
 const getToken = () =>
@@ -110,7 +109,6 @@ export const addDepartment     = (name)     => request('POST',   '/settings/depa
 export const removeDepartment  = (name)     => request('DELETE', '/settings/departments', { name });
 
 // ── File upload helper (used by FinalReport and AdminDocumentsTab) ────────
-// FIX: Reads from both storages so sessionStorage sessions work too.
 export const uploadFile = async (formData) => {
   const token = getToken();
   const BASE  = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';

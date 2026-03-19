@@ -139,11 +139,6 @@
   .notification-dropdown { width: 95vw; right: -40px; }
 }
 
-/* ================================================================
-   ADMIN DASHBOARD — MISSING CLASS PATCHES
-   These fix classes used in AdminDashboard.js not covered by
-   design-system.css
-   ================================================================ */
 
 /* btn-outline-blue — used on Broadcast button */
 .btn-outline-blue {
@@ -333,7 +328,7 @@
 }
 
 /* ================================================================
-   STUDENT TABLE — MOBILE FIX
+   STUDENT TABLE — MOBILE 
    ================================================================ */
 
 /* Wrap every data-table in a scroll container */

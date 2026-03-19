@@ -1,10 +1,3 @@
-// src/pages/AcademicDashboard.js
-// FIX: Replaced N+1 API calls (2 per student) with a single batch stats
-// call to GET /api/students/stats. With 30 students the old code made 61
-// HTTP requests on every load; the new code makes exactly 3 total:
-//   1. getStudents()
-//   2. getStudentStats(allIds, totalWeeks)
-//   3. getVisits()
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import AcademicSidebar   from '../components/academic/AcademicSidebar';
@@ -140,7 +133,7 @@ const AcademicDashboard = () => {
       <div style={{ display:'flex', alignItems:'center', justifyContent:'center', height:'60vh', flexDirection:'column', gap:'12px', color:'#64748b' }}>
         <div style={{ width:'32px', height:'32px', border:'3px solid #e2e8f0', borderTopColor:'#3b82f6', borderRadius:'50%', animation:'spin 0.8s linear infinite' }} />
         <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
-        <p style={{ fontSize:'14px' }}>Loading student data…</p>
+        <p style={{ fontSize:'14px' }}>Loading data…</p>
       </div>
     );
 

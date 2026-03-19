@@ -901,6 +901,18 @@ default:
         };
 
         const setSField = (k, v) => setSettings(prev => ({ ...prev, [k]: v }));
+
+        // Convert a date value (ISO string or Date object) to YYYY-MM-DD
+        // using LOCAL timezone so date inputs never show the wrong day
+        const toLocalDateStr = (val) => {
+          if (!val) return '';
+          const d = new Date(val);
+          if (isNaN(d)) return '';
+          const y = d.getFullYear();
+          const m = String(d.getMonth() + 1).padStart(2, '0');
+          const day = String(d.getDate()).padStart(2, '0');
+          return `${y}-${m}-${day}`;
+        };
         const weightsTotal = (Number(sForm.weightIndustrial)||0) + (Number(sForm.weightAcademic)||0) + (Number(sForm.weightLogbook)||0);
 
         return (
@@ -953,13 +965,13 @@ default:
                       <div className="input-group">
                         <label>Portal Opening Date</label>
                         <input type="date" className="admin-input-select"
-                          value={sForm.portalOpenDate ? new Date(sForm.portalOpenDate).toISOString().slice(0,10) : ''}
+                          value={sForm.portalOpenDate ? toLocalDateStr(sForm.portalOpenDate) : ''}
                           onChange={e => setSField('portalOpenDate', e.target.value)} />
                       </div>
                       <div className="input-group">
                         <label>Final Submission Deadline</label>
                         <input type="date" className="admin-input-select"
-                          value={sForm.submissionDeadline ? new Date(sForm.submissionDeadline).toISOString().slice(0,10) : ''}
+                          value={sForm.submissionDeadline ? toLocalDateStr(sForm.submissionDeadline) : ''}
                           onChange={e => setSField('submissionDeadline', e.target.value)} />
                       </div>
                     </div>

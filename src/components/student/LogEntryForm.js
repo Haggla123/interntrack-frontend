@@ -50,7 +50,7 @@ const LogEntryForm = ({ isLocationVerified }) => {
   const [alreadySubmitted, setAlreadySubmitted] = useState(false);
   const [checkingToday,    setCheckingToday]    = useState(true);
 
-  // FIX: read from both storages — "Don't Remember Me" sessions use sessionStorage
+  // read from both storages — "Don't Remember Me" sessions use sessionStorage
   const placement = (() => {
     try {
       const raw = localStorage.getItem('studentPlacement') || sessionStorage.getItem('studentPlacement');

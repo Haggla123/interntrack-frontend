@@ -1,6 +1,3 @@
-/* src/index.css — global resets and base styles */
-/* FIX: was empty, causing a pointless import in index.js */
-
 *,
 *::before,
 *::after {

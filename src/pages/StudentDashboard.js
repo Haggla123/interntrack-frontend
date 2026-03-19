@@ -1,8 +1,3 @@
-// src/pages/StudentDashboard.js
-// FIX: handleLogout now calls useAuth().logout() instead of manually
-// removing localStorage keys and calling navigate(). This ensures the
-// AuthContext state is cleared, the token is invalidated client-side,
-// and the redirect happens consistently.
 import React, { useState, useEffect } from 'react';
 import { Menu, MapPin, BookOpen, CheckCircle2, AlertCircle, Phone, Mail } from 'lucide-react';
 import { getMyLogs } from '../api';
@@ -33,7 +28,7 @@ const getPlacement = (userId) => {
 };
 
 const StudentDashboard = () => {
-  const { user, logout, refreshUser } = useAuth();  // FIX: destructure logout
+  const { user, logout, refreshUser } = useAuth(); 
   const [activeTab, setActiveTab] = useState('overview');
   const [isVerified, setIsVerified] = useState(false);
   const [geofenceEnabled, setGeofenceEnabled] = useState(true);
@@ -55,10 +50,10 @@ const StudentDashboard = () => {
 
   useEffect(() => {
     if (!user) return;
-    // FIX: only consider a student "placed" if placementStatus is Active AND
-    // they actually have a populated companyId object. Previously companyId or
-    // academicSupervisor being any truthy value (even a bare ObjectId string
-    // from a partial assignment) made the dashboard show "placed".
+
+    // only consider a student "placed" if placementStatus is Active AND
+    // they actually have a populated companyId object.
+
     const isPlaced = user.placementStatus === 'Active'
       && user.companyId
       && typeof user.companyId === 'object'
@@ -261,9 +256,7 @@ const StudentDashboard = () => {
 
               {/* Industrial Supervisor — show always if placed OR if supervisor assigned */}
               {(placement || user?.industrialSupervisor) && (() => {
-                // FIX: previously only showed placement.supervisorName (company contact field).
-                // Now falls back to user.industrialSupervisor (the User account of the
-                // supervisor) which is populated by /auth/me after the authController fix.
+                
                 const indSup = user?.industrialSupervisor;
                 const name = placement?.supervisorName || indSup?.name || '';
                 const email = placement?.supervisorEmail || indSup?.email || '';

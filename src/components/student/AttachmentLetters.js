@@ -83,9 +83,7 @@ const AttachmentLetters = () => {
     }
   };
 
-  // FIX: Use the shared downloadFile helper which fetches the real
-  // binary stream from /documents/:id/download instead of trying
-  // to decode a non-existent base64 fileData field.
+
   const handleDownload = async (docId, filename) => {
     setDownloading(docId);
     try {

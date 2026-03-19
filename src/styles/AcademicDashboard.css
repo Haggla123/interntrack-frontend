@@ -465,7 +465,7 @@
 .spin { animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* Responsive Mobile Fix */
+/* Responsive Mobile */
 @media screen and (max-width: 480px) {
   .settings-layout {
     grid-template-columns: 1fr;

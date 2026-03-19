@@ -1,7 +1,5 @@
 // src/components/admin/AdminDocumentsTab.js
-// FIX: replaced raw fetch + localStorage.getItem('token') with the
-// shared api.uploadFile() helper which reads from both localStorage
-// and sessionStorage.
+
 import React, { useState, useEffect, useRef } from 'react';
 import { FileDown, Upload, Trash2, FileText, AlertCircle, CheckCircle2, Loader, Users } from 'lucide-react';
 import * as api from '../../api';
@@ -38,7 +36,7 @@ const AdminDocumentsTab = () => {
       formData.append('type',     'attachment-letter');
       formData.append('isPublic', 'true');
 
-      // FIX: use shared helper — reads from both localStorage and sessionStorage
+      // use shared helper — reads from both localStorage and sessionStorage
       const res     = await api.uploadFile(formData);
       const created = res?.data || res;
       setDocs(prev => {

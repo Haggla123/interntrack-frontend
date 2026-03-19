@@ -51,15 +51,15 @@ function App() {
             </PrivateRoute>
           } />
 
-          {/* FIX: /change-password now requires authentication.
-              Previously it had no PrivateRoute wrapper — anyone could visit it. */}
+          {/* change-password now requires authentication.*/}
+          
           <Route path="/change-password" element={
             <PrivateRoute roles={['admin', 'student', 'academic', 'industrial']}>
               <ChangePassword />
             </PrivateRoute>
           } />
 
-          {/* Industrial supervisor — FIX: removed 'industry' alias, backend uses 'industrial' */}
+          {/* Industrial supervisor */}
           <Route path="/industrial" element={
             <PrivateRoute roles={['industrial']}>
               <IndustrialDashboard />

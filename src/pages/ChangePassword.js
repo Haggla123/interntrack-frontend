@@ -1,7 +1,3 @@
-// src/pages/ChangePassword.js
-// FIX: Role redirect after password change read only localStorage.
-// For sessionStorage sessions the role was always '' → redirected to /student
-// regardless of actual role. Now reads both storages.
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, Eye, EyeOff, AlertCircle, CheckCircle2, Loader, Lock } from 'lucide-react';
@@ -52,7 +48,7 @@ const ChangePassword = () => {
 
       setSuccess(true);
 
-      // FIX: read role from whichever storage has the session
+      // read role from whichever storage has the session
       const role = (() => {
         try {
           const raw = localStorage.getItem('user') || sessionStorage.getItem('user');

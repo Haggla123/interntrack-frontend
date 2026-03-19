@@ -1,7 +1,3 @@
-// src/components/student/AvailablePlacements.js
-// FIX: Placement is now only confirmed when the API call succeeds.
-// Previously, the placement was saved to localStorage and the student
-// was redirected even when the slot request threw an error.
 import React, { useState, useEffect } from 'react';
 import { Building2, MapPin, CheckCircle2, AlertCircle, User, Phone, Mail } from 'lucide-react';
 import { getCompanies, applyForSlot } from '../../api';
@@ -39,8 +35,6 @@ const AvailablePlacements = ({ onPlacementAccepted }) => {
     setError('');
 
     try {
-      // FIX: Only proceed if the API call succeeds. Previously, the catch
-      // block fell through and the student was placed regardless of the error.
       const res     = await applyForSlot(companyId);
       const updated = res.data || res;
 
@@ -64,10 +58,7 @@ const AvailablePlacements = ({ onPlacementAccepted }) => {
         acceptedAt:      new Date().toISOString(),
       };
 
-      // FIX: write studentPlacement to whichever storage holds the active session.
-      // Previously always wrote to localStorage, so "Don't Remember Me" sessions
-      // (token in sessionStorage) never got the placement stored and the student
-      // appeared unplaced on every page load after applying.
+      // write studentPlacement to whichever storage holds the active session.
       const storage = localStorage.getItem('token') ? localStorage : sessionStorage;
       storage.setItem('studentPlacement', JSON.stringify(placement));
       setAccepted(company);

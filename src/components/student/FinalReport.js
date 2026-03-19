@@ -1,7 +1,3 @@
-// src/components/student/FinalReport.js
-// FIX: replaced raw fetch + localStorage.getItem('token') with the
-// shared api.uploadFile() helper which reads from both localStorage
-// and sessionStorage — so "Don't Remember Me" sessions work too.
 import React, { useState } from 'react';
 import { Lock, FileCheck, Send, AlertCircle, FileText, Upload, CheckCircle, Loader } from 'lucide-react';
 import { uploadFile } from '../../api';
@@ -40,7 +36,8 @@ const FinalReport = ({ completedWeeks, totalWeeks = 6 }) => {
       const formData = new FormData();
       formData.append('file', reportFile);
       formData.append('type', 'final-report');
-      // FIX: use shared helper — no more hardcoded localStorage.getItem('token')
+
+      //use shared helper — no more hardcoded localStorage.getItem('token')
       await uploadFile(formData);
       setSubmitted(true);
     } catch (err) {
