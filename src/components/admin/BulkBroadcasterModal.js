@@ -70,13 +70,13 @@ const BulkBroadcasterModal = ({
       <div style={{ background:'#fff', borderRadius:'20px', width:'100%', maxWidth:'580px', maxHeight:'92vh', display:'flex', flexDirection:'column', overflow:'hidden', boxShadow:'0 32px 64px -12px rgba(0,0,0,0.25)', animation:'bb-pop 0.22s cubic-bezier(0.34,1.56,0.64,1)' }}>
 
         {/* ── Header ── */}
-        <div style={{ background:'linear-gradient(135deg,#92400e,#d97706)', padding:'20px 24px', display:'flex', alignItems:'center', justifyContent:'space-between', flexShrink:0 }}>
+        <div style={{ background:'linear-gradient(135deg,#810eba,#0362c1)', padding:'20px 24px', display:'flex', alignItems:'center', justifyContent:'space-between', flexShrink:0 }}>
           <div style={{ display:'flex', alignItems:'center', gap:'12px' }}>
             <div style={{ width:'42px', height:'42px', background:'rgba(255,255,255,0.2)', borderRadius:'10px', display:'flex', alignItems:'center', justifyContent:'center' }}>
               <Send size={20} color="#fff" />
             </div>
             <div>
-              <h3 style={{ margin:0, fontSize:'1rem', fontWeight:800, color:'#fff' }}>Portal Broadcaster</h3>
+              <h3 style={{ margin:0, fontSize:'1rem', fontWeight:800, color:'#ffffff' }}>Portal Broadcaster</h3>
               <p style={{ margin:0, fontSize:'11.5px', color:'rgba(255,255,255,0.7)', marginTop:'1px' }}>Send announcements to your portal users</p>
             </div>
           </div>
@@ -125,7 +125,7 @@ const BulkBroadcasterModal = ({
                         background:  targetRole === tab.value ? '#fffbeb' : '#fff',
                         color:       targetRole === tab.value ? '#92400e' : '#64748b',
                       }}>
-                      {tab.label} <span style={{ fontSize:'11px', fontWeight:900, color: targetRole === tab.value ? '#d97706' : '#94a3b8' }}>({tab.count})</span>
+                      {tab.label} <span style={{ fontSize:'11px', fontWeight:900, color: targetRole === tab.value ? '#0362c1' : '#94a3b8' }}>({tab.count})</span>
                     </button>
                   ))}
                 </div>
@@ -200,7 +200,7 @@ const BulkBroadcasterModal = ({
               Discard
             </button>
             <button className="bb-send-btn" onClick={handleSend} disabled={sending || targetCount === 0}
-              style={{ padding:'10px 22px', background: sending || targetCount === 0 ? '#94a3b8' : 'linear-gradient(135deg,#92400e,#d97706)', color:'#fff', border:'none', borderRadius:'10px', fontSize:'13px', fontWeight:700, cursor: sending || targetCount === 0 ? 'not-allowed' : 'pointer', display:'flex', alignItems:'center', gap:'7px', transition:'opacity 0.15s' }}>
+              style={{ padding:'10px 22px', background: sending || targetCount === 0 ? '#94a3b8' : 'linear-gradient(135deg,#810eba,#0362c1)', color:'#fff', border:'none', borderRadius:'10px', fontSize:'13px', fontWeight:700, cursor: sending || targetCount === 0 ? 'not-allowed' : 'pointer', display:'flex', alignItems:'center', gap:'7px', transition:'opacity 0.15s' }}>
               {sending
                 ? <><div style={{ width:'14px', height:'14px', border:'2px solid rgba(255,255,255,0.3)', borderTopColor:'#fff', borderRadius:'50%', animation:'bb-spin 0.8s linear infinite' }} /> Sending to {targetCount}…</>
                 : <><Send size={14} /> Blast Announcement</>}
